@@ -23,24 +23,24 @@ const perguntas = [
         alternativas: [
             {
                 texto: " Lugares agitados e movimentados ",
-                afirmacao: " Sempre fique atento, mantenha seus pertences próximos ",
+                afirmacao: " Sempre fique atento, mantenha seus pertences próximos. ",
             },
             {
                 texto: " Lugares Calmos e aconchegantes ",
-                afirmacao: " Aproveite suas férias para tirar um descanso ",
+                afirmacao: " Aproveite suas férias para tirar um descanso. ",
             }
         ]
     },
     {
-        enunciado: " Maravilha!Me conte... Que vai te acompanhar? ",
+        enunciado: " Maravilha! Me conte... Que vai te acompanhar? ",
         alternativas: [
             {
                 texto: " Família e/ou pets ",
-                afirmacao: " Hotéis ou resort's são a melhor opção para você  ",
+                afirmacao: " Hotéis ou resort's são a melhor opção para você. ",
             },
             {
                 texto: " Amigos ",
-                afirmacao: " AirBnb e empresas de turismo podem te auxliar ",
+                afirmacao: " AirBnb e empresas de turismo podem te auxliar. ",
             }
         ]
     },
@@ -49,11 +49,11 @@ const perguntas = [
         alternativas: [
             {
                 texto: " Até três salários mínimos ",
-                afirmacao: " Boa opção para você são viagens nacionais ",
+                afirmacao: " Boa opção para você são viagens nacionais. ",
             },
             {
                 texto: " Acima de três salários mínimos ",
-                afirmacao: " Você irá adorar conhecer novos países ",
+                afirmacao: " Você irá adorar conhecer novos países. ",
             }
         ]
     },
@@ -62,11 +62,11 @@ const perguntas = [
         alternativas: [
             {
                 texto: " Carro ou Motocicletas ",
-                afirmacao: " Seu destino pode ser próximo e você ",
+                afirmacao: " Seu destino pode ser próximo a você. ",
             },
             {
-                texto: " Avião ou Õnibus ",
-                afirmacao: " Sair da sua zona de conforto e conhecer novos horizontes ",
+                texto: " Avião ou Ônibus ",
+                afirmacao: " Sair da sua zona de conforto e conhecer novos horizontes. ",
             }
         ]
     },
@@ -74,10 +74,16 @@ const perguntas = [
 
 let atual = 0;
 let perguntaAtual;
+let historiaFinal = "";
 
 function mostraPergunta () {
+    if (atual>= perguntas.length){
+        mostraResultado();
+        return;
+    }
     perguntaAtual = perguntas[atual];
     caixaPerguntas.textContent = perguntaAtual.enunciado;
+    caixaAlternativas.textContent = "";
     mostraAlternativas();
 }
 
@@ -85,8 +91,22 @@ function mostraAlternativas(){
     for (const alternativa of perguntaAtual.alternativas){
         const botaoAlternativas = document.createElement ("button");
         botaoAlternativas.textContent = alternativa.texto;
+        botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa));
         caixaAlternativas.appendChild (botaoAlternativas);
     }
+}
+
+function respostaSelecionada(opcaoSelecionada){
+    const afirmacoes = opcaoSelecionada.afirmacao;
+    historiaFinal += afirmacoes + " ";
+    atual++;
+    mostraPergunta();
+}
+
+function mostraResultado(){
+    caixaPerguntas.textContent = "Seguindo a suas respostas em nossa pesquisa, a viagem ideal para você seria referente à essas sugestões:"
+    textoResultado.textContent = historiaFinal;
+    caixaAlternativas.textContent = "";
 }
 
 mostraPergunta();
