@@ -19,20 +19,20 @@ const perguntas = [
         ]
     },
     {
-        enunciado: " ótimo! Continuando com sua preferência, o lugar que deseja ir, seria...?",
+        enunciado: " Ótimo! Continuando com sua preferência, o lugar que deseja ir, seria...?",
         alternativas: [
             {
                 texto: " Lugares agitados e movimentados ",
                 afirmacao: " Sempre fique atento, mantenha seus pertences próximos. ",
             },
             {
-                texto: " Lugares Calmos e aconchegantes ",
+                texto: " Lugares calmos e aconchegantes ",
                 afirmacao: " Aproveite suas férias para tirar um descanso. ",
             }
         ]
     },
     {
-        enunciado: " Maravilha! Me conte... Que vai te acompanhar? ",
+        enunciado: " Maravilha! Me conte... Quem vai te acompanhar? ",
         alternativas: [
             {
                 texto: " Família e/ou pets ",
@@ -40,7 +40,7 @@ const perguntas = [
             },
             {
                 texto: " Amigos ",
-                afirmacao: " AirBnb e empresas de turismo podem te auxliar. ",
+                afirmacao: " AirBnb e empresas de turismo podem te auxiliar. ",
             }
         ]
     },
